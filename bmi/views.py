@@ -19,7 +19,7 @@ class BMICalculatorAPIView(APIView):
         desc = [
             'This endpoint accepts Height(cm) and Weight(kg)',
             'It will take those data to calculate the BMI',
-            'Formula for BMI = weight/(height*2)',
+            'Formula for BMI = weight/(height**2)',
         ]
 
         return Response({'Message': 'Hello & Welcome!', 'Description': desc}, status=status.HTTP_200_OK)
@@ -58,4 +58,5 @@ class BMICalculatorAPIView(APIView):
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
         except Exception as e:
+            # return Response({'Error Message': str(e)}, status=status.HTTP_400_BAD_REQUEST)
             return Response({'Error Message': 'Invalid Parameters'}, status=status.HTTP_400_BAD_REQUEST)
